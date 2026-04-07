@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Erstgespräch – Unternehmenskunden</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="header-content">
+      <div class="header-left">
+        <div class="header-title">BERATUNGSPROTOKOLL</div>
+        <div class="header-subtitle">Erstgespräch Unternehmenskunden</div>
+      </div>
+      <div class="header-right">
+        <div class="logo-placeholder">IHR LOGO</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="print-bar no-print">
+    <div class="print-bar-inner">
+      <span class="print-info">Alle Module aktiv → Als PDF speichern</span>
+      <button class="btn-print" onclick="window.print()">🖨 Als PDF speichern</button>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <!-- KOPFZEILE MAKLER -->
+    <section class="section section-kopf">
+      <div class="section-header always-open">
+        <div class="section-title-row">
+          <span class="section-icon">📋</span>
+          <span class="section-name">Gesprächsdaten &amp; Makler</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="form-grid col-2">
+          <div class="form-group">
+            <label>Vertriebspartner / Makler</label>
+            <input type="text" placeholder="Name des Maklers" />
+          </div>
+          <div class="form-group">
+            <label>Kennung / Maklernummer</label>
+            <input type="text" placeholder="Kennung" />
+          </div>
+          <div class="form-group">
+            <label>Datum</label>
+            <input type="date" />
+          </div>
+          <div class="form-group">
+            <label>Uhrzeit von / bis</label>
+            <input type="text" placeholder="z.B. 10:00 – 11:30 Uhr" />
+          </div>
+        </div>
+        <div class="form-grid col-2" style="margin-top:12px">
+          <div class="form-group">
+            <label>Art des Gesprächs</label>
+            <div class="checkbox-row">
+              <label class="cb-label"><input type="checkbox" /> persönlich</label>
+              <label class="cb-label"><input type="checkbox" /> telefonisch</label>
+              <label class="cb-label"><input type="checkbox" /> per Video</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Gesprächsteilnehmer</label>
+            <div class="checkbox-row">
+              <label class="cb-label"><input type="checkbox" /> Kunde</label>
+              <label class="cb-label"><input type="checkbox" /> Partner</label>
+              <label class="cb-label"><input type="checkbox" /> sonstige</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- A: FIRMENSTAMMDATEN -->
+    <section class="section" id="sec-a">
+      <div class="section-header" onclick="toggleSection('sec-a')">
+        <div class="section-title-row">
+          <span class="section-icon">🏢</span>
+          <span class="section-name">A – Firmenstammdaten</span>
+        </div>
+        <div class="section-controls no-print"><span class="toggle-icon">▼</span></div>
+      </div>
+      <div class="section-body">
+        <div class="form-grid col-2">
+          <div class="form-group col-span-2">
+            <label>Firma und Rechtsform</label>
+            <input type="text" placeholder="z.B. Mustermann GmbH" />
+          </div>
+          <div class="form-group">
+            <label>Betriebsart / Tätigkeitsfeld</label>
+            <input type="text" placeholder="Branche / Tätigkeit" />
+          </div>
+          <div class="form-group">
+            <label>Betriebsgründung am</label>
+            <input type="date" />
+          </div>
+          <div class="form-group">
+            <label>Homepage</label>
+            <input type="text" placeholder="www.firma.de" />
+          </div>
+          <div class="form-group">
+            <label>Anrede</label>
+            <div class="checkbox-row">
+              <label class="cb-label"><input type="checkbox" /> Herr</label>
+              <label class="cb-label"><input type="checkbox" /> Frau</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Name, Vorname Ansprechpartner</label>
+            <input type="text" placeholder="Ansprechpartner / Inhaber / GF" />
+          </div>
+          <div class="form-group">
+            <label>Geburtsdatum</label>
+            <input type="date" />
+          </div>
+          <div class="form-group col-span-2">
+            <label>Straße, Hausnummer</label>
+            <input type="text" placeholder="Straße und Hausnummer" />
+          </div>
+          <div class="form-group">
+            <label>PLZ</label>
+            <input type="text" placeholder="PLZ" />
+          </div>
+          <div class="form-group">
+            <label>Ort</label>
+            <input type="text" placeholder="Ort" />
+          </div>
+          <div class="form-group">
+            <label>Telefon</label>
+            <input type="tel" placeholder="Telefon" />
+          </div>
+          <div class="form-group">
+            <label>Mobil</label>
+            <input type="tel" placeholder="Mobil" />
+          </div>
+          <div class="form-group">
+            <label>E-Mail</label>
+            <input type="email" placeholder="E-Mail" />
+          </div>
+          <div class="form-group">
+            <label>Telefax</label>
+            <input type="tel" placeholder="Fax" />
+          </div>
+        </div>
+        <div class="subsection-title">Weitere Betriebsstätten</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead><tr><th style="width:50%">Straße, PLZ, Ort</th><th>nur Lager?</th></tr></thead>
+            <tbody>
+              <tr><td><input type="text" placeholder="Betriebsstätte 2" /></td><td class="center"><input type="checkbox" /></td></tr>
+              <tr><td><input type="text" placeholder="Betriebsstätte 3" /></td><td class="center"><input type="checkbox" /></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="form-grid col-2" style="margin-top:12px">
+          <div class="form-group">
+            <label>Niederlassungen Inland / Ausland</label>
+            <input type="text" placeholder="z.B. 2 Inland, 1 Ausland" />
+          </div>
+          <div class="form-group">
+            <label>Weitere rechtl. selbst./unselbst. Firmen</label>
+            <input type="text" placeholder="Firmennamen" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- B: UNTERNEHMENSKENNZAHLEN -->
+    <section class="section" id="sec-b">
+      <div class="section-header" onclick="toggleSection('sec-b')">
+        <div class="section-title-row">
+          <span class="section-icon">📊</span>
+          <span class="section-name">B – Unternehmenskennzahlen</span>
+        </div>
+        <div class="section-controls no-print"><span class="toggle-icon">▼</span></div>
+      </div>
+      <div class="section-body">
+        <div class="subsection-title">Anzahl der Mitarbeiter</div>
+        <div class="form-grid col-5">
+          <div class="form-group"><label>Gesamt</label><input type="number" placeholder="0" /></div>
+          <div class="form-group"><label>Vollzeit</label><input type="number" placeholder="0" /></div>
+          <div class="form-group"><label>Teilzeit</label><input type="number" placeholder="0" /></div>
+          <div class="form-group"><label>Minijob</label><input type="number" placeholder="0" /></div>
+          <div class="form-group"><label>Azubi</label><input type="number" placeholder="0" /></div>
+          <div class="form-group"><label>Inhaber / GF</label><input type="number" placeholder="0" /></div>
+          <div class="form-group"><label>davon kaufmänn.</label><input type="number" placeholder="0" /></div>
+          <div class="form-group"><label>davon gewerblich</label><input type="number" placeholder="0" /></div>
+        </div>
+        <div class="subsection-title">Umsatz / Lohnsummen / Sonstiges</div>
+        <div class="form-grid col-2">
+          <div class="form-group"><label>Jahresumsatz (netto)</label><div class="input-eur"><input type="text" placeholder="0,00" /><span>EUR</span></div></div>
+          <div class="form-group"><label>Wareneinsatz p.a.</label><div class="input-eur"><input type="text" placeholder="0,00" /><span>EUR</span></div></div>
+          <div class="form-group"><label>Brutto-Jahreslohn/-gehalt gesamt (ohne Inhaber)</label><div class="input-eur"><input type="text" placeholder="0,00" /><span>EUR</span></div></div>
+          <div class="form-group"><label>Aufwendungen Subunternehmer p.a.</label><div class="input-eur"><input type="text" placeholder="0,00" /><span>EUR</span></div></div>
+          <div class="form-group"><label>davon kaufmännisch</label><div class="input-eur"><input type="text" placeholder="0,00" /><span>EUR</span></div></div>
+          <div class="form-group"><label>davon gewerblich</label><div class="input-eur"><input type="text" placeholder="0,00" /><span>EUR</span></div></div>
+        </div>
+        <div class="subsection-title">Tätigkeitsbeschreibung mit %-Aufteilung</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead><tr><th style="width:80px">Anteil %</th><th>Tätigkeit / Beschreibung</th></tr></thead>
+            <tbody>
+              <tr><td><input type="text" placeholder="%" /></td><td><input type="text" placeholder="Tätigkeit" /></td></tr>
+              <tr><td><input type="text" placeholder="%" /></td><td><input type="text" placeholder="Tätigkeit" /></td></tr>
+              <tr><td><input type="text" placeholder="%" /></td><td><input type="text" placeholder="Tätigkeit" /></td></tr>
+              <tr><td><input type="text" placeholder="%" /></td><td><input type="text" placeholder="Tätigkeit" /></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- C: bAV -->
+    <section class="section module" id="sec-c">
+      <div class="section-header module-header" onclick="toggleSection('sec-c')">
+        <div class="section-title-row">
+          <span class="section-icon">🏦</span>
+          <span class="section-name">C – Betriebliche Altersvorsorge (bAV)</span>
+          <span class="modul-badge no-print">Modul</span>
+        </div>
+        <div class="section-controls no-print"><span class="toggle-icon">▼</span></div>
+      </div>
+      <div class="section-body">
+        <div class="beraterfrage">
+          <span class="beraterfrage-icon">💬</span>
+          <div>
+            <em>„Seit dem neuen Betriebsrentenstärkungsgesetz (BRSG/BRSG II) gibt es für Arbeitgeber klare Pflichten bei der betrieblichen Altersvorsorge – haben Sie das bei sich schon sauber gelöst?"</em><br/>
+            <em>„Wie viele Ihrer Mitarbeiter haben aktuell einen bAV-Vertrag – und zahlen Sie bereits den Pflichtzuschuss von mindestens 15 %?"</em>
+          </div>
+        </div>
+        <div class="form-grid col-2">
+          <div class="form-group"><label>Besteht bereits eine bAV-Lösung?</label><div class="checkbox-row"><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></div></div>
+          <div class="form-group"><label>Anzahl MA mit bAV-Vertrag</label><input type="number" placeholder="0" /></div>
+          <div class="form-group col-span-2">
+            <label>Durchführungsweg</label>
+            <div class="checkbox-row wrap">
+              <label class="cb-label"><input type="checkbox" /> Direktversicherung</label>
+              <label class="cb-label"><input type="checkbox" /> Pensionskasse</label>
+              <label class="cb-label"><input type="checkbox" /> Pensionsfonds</label>
+              <label class="cb-label"><input type="checkbox" /> Unterstützungskasse</label>
+              <label class="cb-label"><input type="checkbox" /> Direktzusage</label>
+            </div>
+          </div>
+          <div class="form-group"><label>Anbieter / Gesellschaft</label><input type="text" placeholder="Gesellschaft" /></div>
+          <div class="form-group"><label>AG-Zuschuss vorhanden?</label><div class="checkbox-row"><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></div></div>
+          <div class="form-group"><label>Höhe AG-Zuschuss</label><input type="text" placeholder="___ %" /></div>
+          <div class="form-group"><label>BRSG-konform (≥ 15 %)?</label><div class="checkbox-row"><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label><label class="cb-label"><input type="checkbox" /> unklar</label></div></div>
+          <div class="form-group col-span-2"><label>Welche MA-Gruppen eingeschlossen?</label><div class="checkbox-row wrap"><label class="cb-label"><input type="checkbox" /> alle Mitarbeiter</label><label class="cb-label"><input type="checkbox" /> nur GF / Führungskräfte</label><label class="cb-label"><input type="checkbox" /> nur kaufmännisch</label><label class="cb-label"><input type="checkbox" /> individuell</label></div></div>
+          <div class="form-group"><label>Kennen Mitarbeiter ihre bAV-Ansprüche?</label><div class="checkbox-row"><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label><label class="cb-label"><input type="checkbox" /> teilweise</label></div></div>
+          <div class="form-group"><label>MA ohne bAV-Vertrag vorhanden?</label><div class="checkbox-row"><label class="cb-label"><input type="checkbox" /> ja, Anzahl:</label><input type="number" placeholder="0" style="width:60px;margin-left:4px" /><label class="cb-label"><input type="checkbox" /> nein</label></div></div>
+          <div class="form-group col-span-2"><label>Beratungswunsch</label><div class="checkbox-row wrap"><label class="cb-label"><input type="checkbox" /> Ersteinrichtung</label><label class="cb-label"><input type="checkbox" /> Optimierung bestehend</label><label class="cb-label"><input type="checkbox" /> BRSG II Check</label><label class="cb-label"><input type="checkbox" /> Anbieter-Überprüfung</label></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- D: bKV -->
+    <section class="section module" id="sec-d">
+      <div class="section-header module-header" onclick="toggleSection('sec-d')">
+        <div class="section-title-row">
+          <span class="section-icon">🏥</span>
+          <span class="section-name">D – Betriebliche Krankenversicherung (bKV)</span>
+          <span class="modul-badge no-print">Modul</span>
+        </div>
+        <div class="section-controls no-print"><span class="toggle-icon">▼</span></div>
+      </div>
+      <div class="section-body">
+        <div class="beraterfrage">
+          <span class="beraterfrage-icon">💬</span>
+          <div><em>„Nutzen Sie schon eine betriebliche Krankenversicherung als Mitarbeiter-Benefit? Gerade im Fachkräftewettbewerb ist das ein günstiger Hebel – bereits ab ca. 30–50 € pro Monat pro Mitarbeiter."</em></div>
+        </div>
+        <div class="form-grid col-2">
+          <div class="form-group"><label>Besteht bereits eine bKV?</label><div class="checkbox-row"><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></div></div>
+          <div class="form-group"><label>Anbieter / Gesellschaft</label><input type="text" placeholder="Gesellschaft" /></div>
+          <div class="form-group col-span-2"><label>Bestehende / gewünschte Bausteine</label><div class="checkbox-row wrap"><label class="cb-label"><input type="checkbox" /> Zahn</label><label class="cb-label"><input type="checkbox" /> Brille / Sehhilfe</label><label class="cb-label"><input type="checkbox" /> Krankentagegeld</label><label class="cb-label"><input type="checkbox" /> Stationär</label><label class="cb-label"><input type="checkbox" /> Ambulant</label><label class="cb-label"><input type="checkbox" /> Vorsorge</label><label class="cb-label"><input type="checkbox" /> Heilpraktiker</label></div></div>
+          <div class="form-group"><label>Budget pro MA / Monat</label><div class="checkbox-row wrap"><label class="cb-label"><input type="checkbox" /> &lt; 25 €</label><label class="cb-label"><input type="checkbox" /> 25–50 €</label><label class="cb-label"><input type="checkbox" /> 50–100 €</label><label class="cb-label"><input type="checkbox" /> &gt; 100 €</label><label class="cb-label"><input type="checkbox" /> individuell</label></div></div>
+          <div class="form-group"><label>Anzahl MA einzuschließen</label><input type="number" placeholder="0" /></div>
+          <div class="form-group"><label>Familienangehörige einschließen?</label><div class="checkbox-row"><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></div></div>
+          <div class="form-group"><label>Beratungswunsch</label><div class="checkbox-row"><label class="cb-label"><input type="checkbox" /> Neu</label><label class="cb-label"><input type="checkbox" /> Optimierung</label></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- E: HAFTPFLICHT -->
+    <section class="section module" id="sec-e">
+      <div class="section-header module-header" onclick="toggleSection('sec-e')">
+        <div class="section-title-row">
+          <span class="section-icon">🛡</span>
+          <span class="section-name">E – Firmen-Haftpflichtversicherungen</span>
+          <span class="modul-badge no-print">Modul</span>
+        </div>
+        <div class="section-controls no-print"><span class="toggle-icon">▼</span></div>
+      </div>
+      <div class="section-body">
+        <div class="beraterfrage">
+          <span class="beraterfrage-icon">💬</span>
+          <div><em>„Wenn morgen ein Mitarbeiter bei einem Kunden einen Schaden verursacht – wer haftet dann, und bis zu welcher Höhe sind Sie wirklich abgesichert?"</em></div>
+        </div>
+        <div class="subsection-title">Beiträge Mitbewerber (aktuell gezahlte Prämien)</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead><tr><th>Sparte</th><th style="width:160px">EUR / Jahr</th></tr></thead>
+            <tbody>
+              <tr><td>Haftpflicht</td><td><div class="input-eur"><input type="text" placeholder="0,00" /><span>EUR</span></div></td></tr>
+              <tr><td>Geschäfts-Inhalt</td><td><div class="input-eur"><input type="text" placeholder="0,00" /><span>EUR</span></div></td></tr>
+              <tr><td>Glas</td><td><div class="input-eur"><input type="text" placeholder="0,00" /><span>EUR</span></div></td></tr>
+              <tr><td>Rechtsschutz</td><td><div class="input-eur"><input type="text" placeholder="0,00" /><span>EUR</span></div></td></tr>
+              <tr><td>Werkverkehr</td><td><div class="input-eur"><input type="text" placeholder="0,00" /><span>EUR</span></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="subsection-title" style="margin-top:16px">Vorschäden der letzten 5 Jahre (Elementar: 10 Jahre)</div>
+        <div class="form-grid col-2">
+          <div class="form-group"><div class="checkbox-row"><label class="cb-label"><input type="checkbox" /> keine</label><label class="cb-label"><input type="checkbox" /> ja</label></div></div>
+          <div class="form-group"><label>Schadentage, -höhe und Sparte</label><input type="text" placeholder="Beschreibung" /></div>
+        </div>
+        <div class="subsection-title" style="margin-top:16px">Versicherungsüberblick</div>
+        <div class="table-wrapper">
+          <table class="data-table check-table">
+            <thead><tr><th>Versicherung</th><th>Besteht bereits?</th><th>Angebot gewünscht?</th><th>Schadensfall letzte 5 J.?</th></tr></thead>
+            <tbody>
+              <tr><td>Betriebs- und Berufshaftpflicht</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><input type="text" placeholder="Anz." style="width:40px" /><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+              <tr><td>Umwelthaftpflicht / Ökohaftpflicht</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><input type="text" placeholder="Anz." style="width:40px" /><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+              <tr><td>D&amp;O (Managerhaftpflicht)</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><input type="text" placeholder="Anz." style="width:40px" /><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+              <tr><td>Berufshaftpflicht</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><input type="text" placeholder="Anz." style="width:40px" /><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+              <tr><td>Vertrauensschadenversicherung</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><input type="text" placeholder="Anz." style="width:40px" /><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+              <tr><td>Betriebsschließungsversicherung</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><input type="text" placeholder="Anz." style="width:40px" /><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="subsection-title" style="margin-top:16px">Zusätzliche Einschlüsse</div>
+        <div class="form-grid col-2">
+          <div class="form-group"><div class="checkbox-row wrap"><label class="cb-label"><input type="checkbox" /> Privathaftpflicht für Inhaber / GF</label><label class="cb-label"><input type="checkbox" /> Tierhalterhaftpflicht</label></div></div>
+          <div class="form-group"><label>Tierhalterhaftpflicht: Anzahl Hunde / Rassen</label><input type="text" placeholder="z.B. 2 Hunde, Labrador" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- F: SACHVERSICHERUNGEN -->
+    <section class="section module" id="sec-f">
+      <div class="section-header module-header" onclick="toggleSection('sec-f')">
+        <div class="section-title-row">
+          <span class="section-icon">🏗</span>
+          <span class="section-name">F – Firmen-Sachversicherungen</span>
+          <span class="modul-badge no-print">Modul</span>
+        </div>
+        <div class="section-controls no-print"><span class="toggle-icon">▼</span></div>
+      </div>
+      <div class="section-body">
+        <div class="subsection-title">Geschäfts-Inhaltsversicherung</div>
+        <div class="form-grid col-2">
+          <div class="form-group col-span-2"><label>Art der Vorräte / Waren</label><input type="text" placeholder="Beschreibung der gelagerten Waren" /></div>
+        </div>
+        <div class="form-group"><label>Gewünschte Gefahren (inkl. Betriebsunterbrechung?)</label>
+          <div class="checkbox-row wrap">
+            <label class="cb-label"><input type="checkbox" /> Feuer</label><label class="cb-label"><input type="checkbox" /> inkl. BU</label>
+            <label class="cb-label"><input type="checkbox" /> Einbruchdiebstahl / Vandalismus</label><label class="cb-label"><input type="checkbox" /> inkl. BU</label>
+            <label class="cb-label"><input type="checkbox" /> Leitungswasser</label><label class="cb-label"><input type="checkbox" /> inkl. BU</label>
+            <label class="cb-label"><input type="checkbox" /> Sturm / Hagel</label><label class="cb-label"><input type="checkbox" /> inkl. BU</label>
+            <label class="cb-label"><input type="checkbox" /> Elementar</label><label class="cb-label"><input type="checkbox" /> inkl. BU</label>
+            <label class="cb-label"><input type="checkbox" /> Elektronik</label><label class="cb-label"><input type="checkbox" /> inkl. BU</label>
+            <label class="cb-label"><input type="checkbox" /> weitere Gefahren</label>
+          </div>
+        </div>
+        <div class="subsection-title" style="margin-top:16px">Versicherungssummen</div>
+        <div class="form-grid col-4">
+          <div class="form-group"><label>Betriebseinrichtung (Neuwert)</label><div class="input-eur"><input type="text" placeholder="0,00" /><span>EUR</span></div></div>
+          <div class="form-group"><label>Vorräte / Waren</label><div class="input-eur"><input type="text" placeholder="0,00" /><span>EUR</span></div></div>
+          <div class="form-group"><label>Vorsorge</label><div class="input-eur"><input type="text" placeholder="0,00" /><span>EUR</span></div></div>
+          <div class="form-group"><label>Klein-Betriebsunterbrechung</label><div class="input-eur"><input type="text" placeholder="0,00" /><span>EUR</span></div></div>
+        </div>
+        <div class="subsection-title" style="margin-top:16px">Art des Gebäudes</div>
+        <div class="form-grid col-2">
+          <div class="form-group"><div class="checkbox-row wrap"><label class="cb-label"><input type="checkbox" /> Wohn-/Geschäftshaus</label><label class="cb-label"><input type="checkbox" /> Geschäftshaus</label><label class="cb-label"><input type="checkbox" /> Pavillon</label><label class="cb-label"><input type="checkbox" /> Garage</label><label class="cb-label"><input type="checkbox" /> Container</label></div></div>
+          <div class="form-group"><label>Das Gebäude ist</label><div class="checkbox-row"><label class="cb-label"><input type="checkbox" /> gemietet</label><label class="cb-label"><input type="checkbox" /> gepachtet</label><label class="cb-label"><input type="checkbox" /> Eigenbesitz</label></div></div>
+          <div class="form-group"><label>Bauweise</label><div class="checkbox-row wrap"><label class="cb-label"><input type="checkbox" /> Stein/Beton mit Ziegel-/Schieferbedachung</label><label class="cb-label"><input type="checkbox" /> Andere:</label><input type="text" placeholder="beschreiben" style="width:150px" /></div></div>
+          <div class="form-group"><label>Weitere Betriebe in den Versicherungsräumen?</label><div class="checkbox-row"><label class="cb-label"><input type="checkbox" /> nein</label><label class="cb-label"><input type="checkbox" /> ja, welche:</label><input type="text" placeholder="Betriebe" style="width:120px" /></div></div>
+        </div>
+        <div class="table-wrapper" style="margin-top:16px">
+          <table class="data-table check-table">
+            <thead><tr><th>Versicherung</th><th>Besteht bereits?</th><th>Angebot gewünscht?</th></tr></thead>
+            <tbody>
+              <tr><td>Ertragsausfall / Betriebsunterbrechung</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+              <tr><td>Immobilien (Eigenbesitz)</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- G: ELEKTRONIK & GLAS -->
+    <section class="section module" id="sec-g">
+      <div class="section-header module-header" onclick="toggleSection('sec-g')">
+        <div class="section-title-row">
+          <span class="section-icon">💻</span>
+          <span class="section-name">G – Elektronik- &amp; Glasversicherung</span>
+          <span class="modul-badge no-print">Modul</span>
+        </div>
+        <div class="section-controls no-print"><span class="toggle-icon">▼</span></div>
+      </div>
+      <div class="section-body">
+        <div class="subsection-title">Elektronikversicherung <small>(nur in Verbindung mit Geschäfts-Inhaltsversicherung)</small></div>
+        <div class="form-grid col-2">
+          <div class="form-group"><label>Versicherungssumme</label><div class="input-eur"><input type="text" placeholder="0,00" /><span>EUR</span></div></div>
+          <div class="form-group"><label>Zusätzliche Einschlüsse</label><div class="checkbox-row"><label class="cb-label"><input type="checkbox" /> Softwareversicherung</label><label class="cb-label"><input type="checkbox" /> Mehrkostenversicherung</label></div></div>
+          <div class="form-group col-span-2"><label>Gerätegruppen vorhanden</label><div class="checkbox-row wrap"><label class="cb-label"><input type="checkbox" /> Daten-, Kommunikations- und Bürotechnik</label><label class="cb-label"><input type="checkbox" /> Mess-, Prüftechnik, Prozessrechner, Kassen, Waagen</label><label class="cb-label"><input type="checkbox" /> Satz- und Reprortechnik</label><label class="cb-label"><input type="checkbox" /> Bild- und Tontechnik</label><label class="cb-label"><input type="checkbox" /> Medizintechnik</label></div></div>
+        </div>
+        <div class="table-wrapper" style="margin-top:16px">
+          <table class="data-table check-table">
+            <thead><tr><th>Versicherung</th><th>Besteht bereits?</th><th>Angebot gewünscht?</th></tr></thead>
+            <tbody>
+              <tr><td>Maschinenversicherung</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+              <tr><td>Maschinen-Betriebsunterbrechung</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="subsection-title" style="margin-top:16px">Glasversicherung</div>
+        <div class="form-grid col-3">
+          <div class="form-group"><label>Nutzfläche des Betriebes</label><div class="input-eur"><input type="text" placeholder="0" /><span>qm</span></div></div>
+          <div class="form-group"><label>Scheiben &gt; 6 qm Einzelgröße?</label><div class="checkbox-row"><label class="cb-label"><input type="checkbox" /> nein</label><label class="cb-label"><input type="checkbox" /> ja →</label><input type="text" placeholder="qm / qm / qm" style="width:100px" /></div></div>
+          <div class="form-group"><label>Werbeanlagen?</label><div class="checkbox-row"><label class="cb-label"><input type="checkbox" /> nein</label><label class="cb-label"><input type="checkbox" /> ja →</label><div class="input-eur" style="width:120px"><input type="text" placeholder="0,00" /><span>EUR</span></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- H: RECHTSSCHUTZ -->
+    <section class="section module" id="sec-h">
+      <div class="section-header module-header" onclick="toggleSection('sec-h')">
+        <div class="section-title-row">
+          <span class="section-icon">⚖️</span>
+          <span class="section-name">H – Rechtsschutzversicherung</span>
+          <span class="modul-badge no-print">Modul</span>
+        </div>
+        <div class="section-controls no-print"><span class="toggle-icon">▼</span></div>
+      </div>
+      <div class="section-body">
+        <div class="beraterfrage">
+          <span class="beraterfrage-icon">💬</span>
+          <div><em>„Wenn ein Mitarbeiter Sie verklagt oder ein Lieferantenstreit eskaliert – was kostet Sie das ohne Rechtsschutz? Anwaltskosten starten schnell bei 5.000 €."</em></div>
+        </div>
+        <div class="form-grid col-2">
+          <div class="form-group"><label>Firmenrechtsschutz</label><div class="checkbox-row wrap"><label class="cb-label"><input type="checkbox" /> allgemein</label><label class="cb-label"><input type="checkbox" /> Arbeitsrechtsschutz</label><label class="cb-label"><input type="checkbox" /> Verkehrsrechtsschutz</label><label class="cb-label"><input type="checkbox" /> Immobilienrechtsschutz</label><label class="cb-label"><input type="checkbox" /> Vertragsrechtsschutz</label></div></div>
+          <div class="form-group"><label>Selbstbeteiligung Firma</label><div class="input-eur"><input type="text" placeholder="0,00" /><span>EUR</span></div></div>
+          <div class="form-group"><label>Privatrechtsschutz GF / Inhaber</label><div class="checkbox-row wrap"><label class="cb-label"><input type="checkbox" /> allgemein</label><label class="cb-label"><input type="checkbox" /> Arbeitnehmerrechtsschutz</label><label class="cb-label"><input type="checkbox" /> Verkehrsrechtsschutz</label><label class="cb-label"><input type="checkbox" /> Immobilienrechtsschutz</label><label class="cb-label"><input type="checkbox" /> erw. Straf-Rechtsschutz</label></div></div>
+          <div class="form-group"><label>Selbstbeteiligung Privat</label><div class="input-eur"><input type="text" placeholder="0,00" /><span>EUR</span></div></div>
+          <div class="form-group col-span-2"><label>Besonderheiten (z.B. Vermieter-Rechtsschutz vorhanden?)</label><input type="text" placeholder="Beschreibung" /></div>
+        </div>
+        <div class="table-wrapper" style="margin-top:16px">
+          <table class="data-table check-table">
+            <thead><tr><th>Versicherung</th><th>Besteht bereits?</th><th>Angebot gewünscht?</th></tr></thead>
+            <tbody>
+              <tr><td>Firmen- und Privat-Rechtsschutz-Kombination</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+              <tr><td>Straf-Rechtsschutz</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- I: KFZ & WERKVERKEHR -->
+    <section class="section module" id="sec-i">
+      <div class="section-header module-header" onclick="toggleSection('sec-i')">
+        <div class="section-title-row">
+          <span class="section-icon">🚗</span>
+          <span class="section-name">I – KFZ-Flotte &amp; Werkverkehr / Transport</span>
+          <span class="modul-badge no-print">Modul</span>
+        </div>
+        <div class="section-controls no-print"><span class="toggle-icon">▼</span></div>
+      </div>
+      <div class="section-body">
+        <div class="table-wrapper">
+          <table class="data-table check-table">
+            <thead><tr><th>Fahrzeugart</th><th>Anzahl</th><th>Besteht bereits?</th><th>Angebot gewünscht?</th></tr></thead>
+            <tbody>
+              <tr><td>PKW</td><td><input type="number" placeholder="0" style="width:60px" /></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+              <tr><td>Nutzfahrzeuge / LKW</td><td><input type="number" placeholder="0" style="width:60px" /></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="subsection-title" style="margin-top:16px">Werkverkehr</div>
+        <div class="form-grid col-3">
+          <div class="form-group"><label>Anzahl PKW (Werkverkehr)</label><input type="number" placeholder="0" /></div>
+          <div class="form-group"><label>Anzahl LKW (Werkverkehr)</label><input type="number" placeholder="0" /></div>
+          <div class="form-group"><label>Max. Transportwert Waren / Werkzeuge</label><div class="input-eur"><input type="text" placeholder="0,00" /><span>EUR</span></div></div>
+        </div>
+        <div class="table-wrapper" style="margin-top:16px">
+          <table class="data-table check-table">
+            <thead><tr><th>Versicherung</th><th>Besteht bereits?</th><th>Angebot gewünscht?</th></tr></thead>
+            <tbody>
+              <tr><td>Warentransport / Werkverkehr</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+              <tr><td>Verkehrshaftung</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- J: CYBER -->
+    <section class="section module" id="sec-j">
+      <div class="section-header module-header" onclick="toggleSection('sec-j')">
+        <div class="section-title-row">
+          <span class="section-icon">🔐</span>
+          <span class="section-name">J – Cyber &amp; IT-Sicherheit</span>
+          <span class="modul-badge no-print">Modul</span>
+        </div>
+        <div class="section-controls no-print"><span class="toggle-icon">▼</span></div>
+      </div>
+      <div class="section-body">
+        <div class="beraterfrage">
+          <span class="beraterfrage-icon">💬</span>
+          <div>
+            <em>„Ein Hackerangriff legt Ihren Betrieb im Schnitt 3 Wochen still – haben Sie sich schon gefragt, was das für Ihren Umsatz bedeuten würde?"</em><br/>
+            <em>„Verarbeiten Sie Kundendaten? Dann sind Sie DSGVO-pflichtig – bei einem Datenleck haften Sie persönlich."</em>
+          </div>
+        </div>
+        <div class="form-grid col-2">
+          <div class="form-group"><label>Cyberversicherung vorhanden?</label><div class="checkbox-row"><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></div></div>
+          <div class="form-group"><label>Interesse an Cyber-Angebot?</label><div class="checkbox-row"><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></div></div>
+          <div class="form-group"><label>Homeoffice-Anteil Mitarbeiter</label><div class="checkbox-row wrap"><label class="cb-label"><input type="checkbox" /> 0 %</label><label class="cb-label"><input type="checkbox" /> &lt; 25 %</label><label class="cb-label"><input type="checkbox" /> 25–50 %</label><label class="cb-label"><input type="checkbox" /> &gt; 50 %</label></div></div>
+          <div class="form-group"><label>Letzte IT-Sicherheitsprüfung</label><div class="checkbox-row wrap"><label class="cb-label"><input type="checkbox" /> &lt; 1 Jahr</label><label class="cb-label"><input type="checkbox" /> 1–3 Jahre</label><label class="cb-label"><input type="checkbox" /> &gt; 3 Jahre</label><label class="cb-label"><input type="checkbox" /> nie</label></div></div>
+          <div class="form-group"><label>Verarbeitung personenbezogener Daten (DSGVO)?</label><div class="checkbox-row"><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></div></div>
+          <div class="form-group"><label>Online-Shop / E-Commerce vorhanden?</label><div class="checkbox-row"><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></div></div>
+          <div class="form-group"><label>Kritische IT-Infrastruktur (Produktion / Steuerung)?</label><div class="checkbox-row"><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- K: WEITERE VERSICHERUNGEN -->
+    <section class="section module" id="sec-k">
+      <div class="section-header module-header" onclick="toggleSection('sec-k')">
+        <div class="section-title-row">
+          <span class="section-icon">📦</span>
+          <span class="section-name">K – Weitere Firmenversicherungen</span>
+          <span class="modul-badge no-print">Modul</span>
+        </div>
+        <div class="section-controls no-print"><span class="toggle-icon">▼</span></div>
+      </div>
+      <div class="section-body">
+        <div class="table-wrapper">
+          <table class="data-table check-table">
+            <thead><tr><th>Versicherung</th><th>Besteht bereits?</th><th>Angebot gewünscht?</th><th>Schadensfall letzte 5 J.?</th></tr></thead>
+            <tbody>
+              <tr><td>Firmen-Gruppenunfall</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><input type="text" placeholder="Anz." style="width:40px" /><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+              <tr><td>Warenkredit</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><input type="text" placeholder="Anz." style="width:40px" /><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+              <tr><td>Bürgschaft (Avalkredit)</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><input type="text" placeholder="Anz." style="width:40px" /><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+              <tr><td>Reiseversicherung</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><input type="text" placeholder="Anz." style="width:40px" /><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- L: PERSONENVERSICHERUNGEN -->
+    <section class="section module" id="sec-l">
+      <div class="section-header module-header" onclick="toggleSection('sec-l')">
+        <div class="section-title-row">
+          <span class="section-icon">👤</span>
+          <span class="section-name">L – Personenversicherungen GF / Inhaber</span>
+          <span class="modul-badge no-print">Modul</span>
+        </div>
+        <div class="section-controls no-print"><span class="toggle-icon">▼</span></div>
+      </div>
+      <div class="section-body">
+        <div class="beraterfrage">
+          <span class="beraterfrage-icon">💬</span>
+          <div>
+            <em>„Haben Sie als Geschäftsführer eigentlich schon eine steueroptimierte Altersvorsorge über die Firma – oder läuft das alles noch privat?"</em><br/>
+            <em>„Wenn Sie morgen berufsunfähig werden – was passiert mit dem Betrieb und Ihrer Familie?"</em>
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table class="data-table check-table">
+            <thead><tr><th>Versicherung</th><th>Besteht bereits?</th><th>Angebot gewünscht?</th></tr></thead>
+            <tbody>
+              <tr><td>Berufsunfähigkeitsversicherung (BU)</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+              <tr><td>Risikolebensversicherung</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+              <tr><td>Dienstunfähigkeitsversicherung</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+              <tr><td>Private Altersvorsorge</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+              <tr><td>Pflegeversicherung (privat)</td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td><td><label class="cb-label"><input type="checkbox" /> ja</label><label class="cb-label"><input type="checkbox" /> nein</label></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="form-grid col-2" style="margin-top:12px">
+          <div class="form-group"><label>Krankenversicherung GF / Inhaber</label><div class="checkbox-row"><label class="cb-label"><input type="checkbox" /> PKV</label><label class="cb-label"><input type="checkbox" /> GKV</label></div></div>
+          <div class="form-group"><label>Anbieter</label><input type="text" placeholder="Gesellschaft" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- M: ERGEBNIS -->
+    <section class="section section-result" id="sec-m">
+      <div class="section-header always-open">
+        <div class="section-title-row">
+          <span class="section-icon">✅</span>
+          <span class="section-name">M – Ergebnis &amp; Nächste Schritte</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="form-group"><label>Priorisierte Handlungsfelder</label><textarea rows="4" placeholder="Zusammenfassung der wichtigsten Bedarfe und Lücken"></textarea></div>
+        <div class="form-group"><label>Vereinbarte Maßnahmen</label><textarea rows="3" placeholder="Was wurde vereinbart?"></textarea></div>
+        <div class="subsection-title" style="margin-top:16px">Empfohlene Gesellschaft / Beitrag / Beginn</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead><tr><th>Sparte</th><th>Empfohlene Gesellschaft</th><th style="width:110px">Beitrag EUR</th><th style="width:90px">Zahlweise</th><th style="width:110px">Beginn</th><th style="width:70px">Angebot</th></tr></thead>
+            <tbody>
+              <tr><td><input type="text" placeholder="Sparte" /></td><td><input type="text" placeholder="Gesellschaft" /></td><td><input type="text" placeholder="0,00" /></td><td><input type="text" placeholder="jährl." /></td><td><input type="date" /></td><td class="center"><label class="cb-label"><input type="checkbox" /> ✓</label></td></tr>
+              <tr><td><input type="text" placeholder="Sparte" /></td><td><input type="text" placeholder="Gesellschaft" /></td><td><input type="text" placeholder="0,00" /></td><td><input type="text" placeholder="jährl." /></td><td><input type="date" /></td><td class="center"><label class="cb-label"><input type="checkbox" /> ✓</label></td></tr>
+              <tr><td><input type="text" placeholder="Sparte" /></td><td><input type="text" placeholder="Gesellschaft" /></td><td><input type="text" placeholder="0,00" /></td><td><input type="text" placeholder="jährl." /></td><td><input type="date" /></td><td class="center"><label class="cb-label"><input type="checkbox" /> ✓</label></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="form-grid col-2" style="margin-top:16px">
+          <div class="form-group"><label>Entscheidung Kunde</label><div class="checkbox-row"><label class="cb-label cb-big"><input type="checkbox" /> Kunde stimmt Angebot zu</label><label class="cb-label cb-big"><input type="checkbox" /> Kunde lehnt Angebot ab</label></div></div>
+          <div class="form-group"><label>Nächster Termin</label><input type="date" /></div>
+        </div>
+        <div class="form-group" style="margin-top:12px"><label>Bemerkungen</label><textarea rows="5" placeholder="Weitere Anmerkungen, Sonderwünsche, Besonderheiten"></textarea></div>
+        <div class="confirmation-box">
+          <p>Der Kunde hat zu den beantragten Versicherungen die Allgemeinen Versicherungsbedingungen und den persönlichen Vertragsvorschlag erhalten. Dem Kunden wurden die besprochenen Versicherungsrisiken ausführlich und verständlich erläutert, dabei wurde ausdrücklich auf finanzielle und existenzielle Risiken hingewiesen. Der Berater (freier Handelsvertreter § 84/92 HGB) vermittelt im Namen der jeweiligen Gesellschaft die angebotenen Produkte, es gelten die aktuellen Versicherungsbedingungen. Mündliche Nebenabreden sind nicht getroffen worden.</p>
+        </div>
+        <div class="signature-row">
+          <div class="signature-field"><div class="sig-line"></div><div class="sig-label">Ort, Datum</div></div>
+          <div class="signature-field"><div class="sig-line"></div><div class="sig-label">Unterschrift Kunde</div></div>
+          <div class="signature-field"><div class="sig-line"></div><div class="sig-label">Unterschrift Berater</div></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="main-footer no-print">
+    <div>Unternehmenskunden-Fragebogen · Stand: 2025 · Alle Angaben vertraulich</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
