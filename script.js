@@ -8,6 +8,14 @@ function toggleSection(id) {
   section.classList.toggle('collapsed');
 }
 
+// Alle Module standardmäßig geöffnet – nichts zu tun.
+// Einzelne Module kann man initial einklappen falls gewünscht:
+// document.getElementById('sec-g').classList.add('collapsed');
+
+// ============================================================
+//  TOGGLE-ALLE BUTTONS (Alle auf-/zuklappen)
+// ============================================================
+
 function expandAll() {
   document.querySelectorAll('.section.module').forEach(s => s.classList.remove('collapsed'));
 }
@@ -16,15 +24,21 @@ function collapseAll() {
   document.querySelectorAll('.section.module').forEach(s => s.classList.add('collapsed'));
 }
 
+// ============================================================
+//  TOOLBAR DYNAMISCH ERZEUGEN
+// ============================================================
+
 document.addEventListener('DOMContentLoaded', () => {
   const bar = document.querySelector('.print-bar-inner');
   if (!bar) return;
 
+  // "Alle einklappen" Button
   const btnCollapse = document.createElement('button');
   btnCollapse.className = 'btn-secondary';
   btnCollapse.textContent = '▲ Alle zuklappen';
   btnCollapse.onclick = collapseAll;
 
+  // "Alle aufklappen" Button
   const btnExpand = document.createElement('button');
   btnExpand.className = 'btn-secondary';
   btnExpand.textContent = '▼ Alle aufklappen';
@@ -70,6 +84,7 @@ function addToolbarStyles() {
 function initAutosave() {
   const SAVE_KEY = 'fragebogen_data';
 
+  // Gespeicherte Daten laden
   try {
     const saved = localStorage.getItem(SAVE_KEY);
     if (saved) {
@@ -79,6 +94,7 @@ function initAutosave() {
     }
   } catch (e) {}
 
+  // Bei jeder Eingabe speichern (debounced)
   let saveTimer;
   document.addEventListener('input', () => {
     clearTimeout(saveTimer);
@@ -99,6 +115,7 @@ function initAutosave() {
     }, 400);
   });
 
+  // "Formular zurücksetzen" Button
   const bar = document.querySelector('.print-bar-inner');
   if (bar) {
     const btnReset = document.createElement('button');
@@ -108,7 +125,15 @@ function initAutosave() {
     btnReset.onclick = () => {
       if (confirm('Alle Eingaben löschen und Formular zurücksetzen?')) {
         localStorage.removeItem(SAVE_KEY);
-        location.reload();
+        document.querySelectorAll('input[type="text"], input[type="number"], input[type="email"], input[type="tel"], input[type="date"], textarea').forEach(el => {
+          el.value = '';
+        });
+        document.querySelectorAll('input[type="checkbox"]').forEach(el => {
+          el.checked = false;
+        });
+        setTodayDate();
+        updateProgress();
+        showSaveNotice('Formular zurückgesetzt.');
       }
     };
     bar.prepend(btnReset);
@@ -146,6 +171,7 @@ function restoreFormData(data) {
 function showSaveNotice(msg) {
   const existing = document.getElementById('save-notice');
   if (existing) existing.remove();
+
   const notice = document.createElement('div');
   notice.id = 'save-notice';
   notice.textContent = msg;
@@ -167,7 +193,13 @@ function showSaveNotice(msg) {
   }, 2200);
 }
 
+// ============================================================
+//  MODUL-VOLLSTÄNDIGKEIT ANZEIGEN
+// ============================================================
+
 function initModuleHighlight() {
+  // Prüft ob eine Sektion mindestens eine Eingabe hat
+  // und markiert den Header mit grünem Häkchen
   document.addEventListener('change', updateProgress);
   document.addEventListener('input', updateProgress);
 }
@@ -179,8 +211,10 @@ function updateProgress() {
         .some(el => el.value.trim() !== '') ||
       [...section.querySelectorAll('input[type="checkbox"]')]
         .some(el => el.checked);
+
     const header = section.querySelector('.section-title-row');
     let dot = header.querySelector('.progress-dot');
+
     if (hasInput) {
       if (!dot) {
         dot = document.createElement('span');
@@ -195,10 +229,17 @@ function updateProgress() {
   });
 }
 
+// ============================================================
+//  HEUTIGES DATUM IN GESPRÄCHSDATEN EINTRAGEN
+// ============================================================
+
 function setTodayDate() {
   const dateInputs = document.querySelectorAll('input[type="date"]');
   if (dateInputs.length > 0) {
     const today = new Date().toISOString().split('T')[0];
-    if (!dateInputs[0].value) dateInputs[0].value = today;
+    // Nur das erste Datumsfeld (Gesprächsdatum) vorausfüllen
+    if (!dateInputs[0].value) {
+      dateInputs[0].value = today;
+    }
   }
 }
